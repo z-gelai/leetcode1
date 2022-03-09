@@ -7,5 +7,7 @@ public class HengHeng {
         System.out.println("hehe");
         System.out.println("hothot");
         System.out.println("master");
+        System.out.println("hothothot");
+
     }
 }
