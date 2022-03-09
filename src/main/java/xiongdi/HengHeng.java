@@ -9,5 +9,6 @@ public class HengHeng {
         System.out.println("master");
         System.out.println("hothothot");
         System.out.println("就是试试试试试试！");
+        System.out.println("不明白有什么可试试的！");
     }
 }
