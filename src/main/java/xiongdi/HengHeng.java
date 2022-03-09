@@ -6,6 +6,7 @@ public class HengHeng {
         System.out.println("hehe");
         System.out.println("hehe");
         System.out.println("hothot");
+        System.out.println("hothothot");
 
     }
 }
