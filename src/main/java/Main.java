@@ -9,34 +9,18 @@ public class Main {
     public static void main(String[] args) {
 
     }
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
-        List<List<Integer>> res=new LinkedList<>();
-        for (int i = 0; i < nums.length-2; i++) {
-            if (nums[i]>0) {
-                break;
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String,List<String>> map=new HashMap<>();
+        for (String str : strs) {
+            char[] cs = str.toCharArray();
+            Arrays.sort(cs);
+            String s = String.valueOf(cs);
+            if (!map.containsKey(s)) {
+                map.put(s,new ArrayList<>());
             }
-            if (i>0 && nums[i]==nums[i-1]) {
-                continue;
-            }
-            int l=i+1,r=nums.length-1;
-            while (l<r){
-                if (nums[l]+nums[r]==(-nums[i])) {
-                    res.add(Arrays.asList(nums[l],nums[r],-nums[i]));
-                    ++l;
-                    --r;
-                    while (l<r && nums[l]==nums[l+1]){
-                        ++l;
-                    }
-                    while (l<r && nums[r]==nums[r-1]){
-                        --r;
-                    }
-                }else if(nums[l]+nums[r]<(-nums[i])){
-                    ++l;
-                }else --r;
-            }
+            map.get(s).add(str);
         }
-        return res;
+        return new ArrayList<>(map.values());
     }
 }
 
