@@ -1,57 +1,49 @@
-import java.util.Deque;
-import java.util.LinkedList;
+import com.sun.javafx.collections.SortHelper;
+import com.sun.javafx.image.IntPixelGetter;
+
+import javax.lang.model.element.VariableElement;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res=new LinkedList<>();
+        for (int i = 0; i < nums.length-2; i++) {
+            if (nums[i]>0) {
+                break;
+            }
+            if (i>0 && nums[i]==nums[i-1]) {
+                continue;
+            }
+            int l=i+1,r=nums.length-1;
+            while (l<r){
+                if (nums[l]+nums[r]==(-nums[i])) {
+                    res.add(Arrays.asList(nums[l],nums[r],-nums[i]));
+                    ++l;
+                    --r;
+                    while (l<r && nums[l]==nums[l+1]){
+                        ++l;
+                    }
+                    while (l<r && nums[r]==nums[r-1]){
+                        --r;
+                    }
+                }else if(nums[l]+nums[r]<(-nums[i])){
+                    ++l;
+                }else --r;
+            }
         }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+        return res;
     }
-    public static TreeNode prev;
-    public static boolean isValidBST(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
-        if (!isValidBST(root.left)) {
-            return false;
-        }
-        if (prev != null && prev.val>=root.val) {
-            return false;
-        }
-        prev=root;
-        if (!isValidBST(root.right)) {
-            return false;
-        }
-        return true;
-    }
-
-
-
-//     if (root==null) {
-//        return true;
-//    }
-//        if (root.left!=null && root.val<=root.left.val || root.right!=null && root.val>=root.right.val) {
-//        return false;
-//    }
-//
-//        return isValidBST(root.left) && isValidBST(root.right);
-
 }
+
+
+
+
+
+
+
+
